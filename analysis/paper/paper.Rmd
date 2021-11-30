@@ -1,17 +1,12 @@
 ---
-title: "Title Goes Here"
+title: "Recreating Figure Showing Relation Between Speed and Body Mass"
 author:
-  - Myfirstname Mylastname:
-      email: fl@oneplace.edu
-      institute: [UofO]
+  - Maike Morrison:
+      email: maikem@stanford.edu
+      institute: [Stanford]
       correspondence: true
-  - Yourfirstname Yourlastname:
-      email: fl@another.edu
-      institute: [UofA]
-      correspondence: false
 institute:
-  - UofO: University of One Place
-  - UofA: University of Another Place
+  - Stanford: Stanford University Department of Biology
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
     bookdown::word_document2:
@@ -22,13 +17,13 @@ output:
       - --lua-filter=../templates/author-info-blocks.lua
       - --lua-filter=../templates/pagebreak.lua
 bibliography: references.bib
-csl: "../templates/journal-of-archaeological-science.csl" # Insert path for the bib-style
+csl: "../templates/nature.csl" # Insert path for the bib-style
 abstract: |
   Text of abstract
 keywords: |
-  keyword 1; keyword 2; keyword 3
+ body mass; speed; animals
 highlights: |
-  These are the highlights. 
+  Animals go zoooom. 
 ---
 
 <!-- This is the format for text comments that will be ignored during renderings. Do not put R code in these comments because it will not be ignored. -->
@@ -57,21 +52,22 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-Here is a citation [@Marwick2017]
+This is a replication of figure 2A from \[@hirt2017\] (fig. @ref(fig:fig2a)).
 
 # Background
 
 # Methods
 
 # Results
+
 ```{r load}
 library(maxspeed)
 library(dplyr)
 library(ggplot2)
 maxspeed <- readRDS("../data/derived_data/maxspeed.RDS")
-``` 
+```
 
-```{r fig2a}
+```{r fig2a, fig.cap="Replication of figure 2a from [@hirt2017]"}
 palette <- list(green = "#83CE3D",
                 orange = "#E39F2F",
                 blue = "#5F9FA1")
@@ -132,25 +128,6 @@ ggplot(fly_dat, aes(x = mass_kg, y = max_spd_kmh)) +
   theme(aspect.ratio = 1)
 ```
 
-<!-- Here's some example analysis code: -->
-
-```{r get-data, eval = FALSE}
-# Note the path that we need to use to access our data files when rendering this document
-my_data <- read.csv(here::here('analysis/data/raw_data/my_csv_file.csv'))
-```
-
-```{r demo-plot, fig.cap="A plot of random numbers"}
-plot(rnorm(10))
-```
-
-Figure \@ref(fig:demo-plot) shows how we can have a caption and cross-reference for a plot
-
-```{r demo-inline-code}
-x <- round(pi, 2)
-```
-
-Here is an example of inline code `r x` in the middle of a sentence. 
-
 # Discussion
 
 # Conclusion
@@ -161,17 +138,18 @@ Here is an example of inline code `r x` in the middle of a sentence.
 
 \newpage
 
-# References 
+# References
 
 <!-- The following line ensures the references appear here for the MS Word or HTML output files, rather than right at the end of the document (this will not work for PDF files):  -->
 
-<div id="refs"></div>
+::: {#refs}
+:::
 
 \newpage
 
 ### Colophon
 
-This report was generated on `r Sys.time()` using the following computational environment and dependencies: 
+This report was generated on `r Sys.time()` using the following computational environment and dependencies:
 
 ```{r colophon, cache = FALSE}
 # which R packages and versions?
