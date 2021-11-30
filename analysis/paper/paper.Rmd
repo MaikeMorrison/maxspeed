@@ -52,7 +52,7 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-This is a replication of figure 2A from \[@hirt2017\] (fig. @ref(fig:fig2a)).
+This is a replication of figure 2A from [@hirt2017] (fig. @ref(fig:fig2a)).
 
 # Background
 
